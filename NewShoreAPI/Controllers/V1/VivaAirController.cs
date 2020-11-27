@@ -33,10 +33,17 @@ namespace NewShoreAPI.Controllers
                 Response Info = await _vivaAirService.SerchFlights(requestModel);
                 return Ok(Info);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
-                return BadRequest();
+                return BadRequest(
+                                    new Response
+                                    {
+                                        IsSuccess = false,
+                                        Message = ex.ToString(),
+
+                                    }
+                    );
             }
 
         }
