@@ -22,7 +22,7 @@ namespace NewShore.Domain.Services
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = "Please select a diferent day of today"
+                        Message = "Please select a diferent day of today "
                     };
                 }
                 string urlBase = "http://testapi.vivaair.com";
