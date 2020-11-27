@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShoreAPI", "NewShoreAPI\NewShoreAPI.csproj", "{7FE46E40-A1CE-4379-BCFF-67CEC7017E50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShoreAPI", "NewShoreAPI\NewShoreAPI.csproj", "{7FE46E40-A1CE-4379-BCFF-67CEC7017E50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation", "1.Presentation", "{D90894A9-D19E-4232-AE10-35C96B18CBC0}"
 EndProject
@@ -17,13 +17,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.Common", "5.Common", "{C9
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6.IOC", "6.IOC", "{6C9F7F88-1D0B-479B-9326-0433C12DBC02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShore.Domain", "NewShore.Domain\NewShore.Domain.csproj", "{58ECD180-3701-4DFB-82E5-766460747BF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShore.Domain", "NewShore.Domain\NewShore.Domain.csproj", "{58ECD180-3701-4DFB-82E5-766460747BF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShore.Infrastructure", "NewShore.Infrastructure\NewShore.Infrastructure.csproj", "{D71B7C7C-60D6-4ACB-BD8B-6488547BD58F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShore.Infrastructure", "NewShore.Infrastructure\NewShore.Infrastructure.csproj", "{D71B7C7C-60D6-4ACB-BD8B-6488547BD58F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShore.Common", "NewShore.Common\NewShore.Common.csproj", "{7A778D4B-9AE1-46AD-B5CE-75549D4FC1AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShore.Common", "NewShore.Common\NewShore.Common.csproj", "{7A778D4B-9AE1-46AD-B5CE-75549D4FC1AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShore.IOC", "NewShore.IOC\NewShore.IOC.csproj", "{B4323E55-3539-485E-BA43-583CC638AE55}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShore.Infrastructure.IoC", "NewShore.Infrastructure.IoC\NewShore.Infrastructure.IoC.csproj", "{FA07431E-29E4-41CE-A35C-4286A24F8F7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,10 +47,10 @@ Global
 		{7A778D4B-9AE1-46AD-B5CE-75549D4FC1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A778D4B-9AE1-46AD-B5CE-75549D4FC1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A778D4B-9AE1-46AD-B5CE-75549D4FC1AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4323E55-3539-485E-BA43-583CC638AE55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4323E55-3539-485E-BA43-583CC638AE55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4323E55-3539-485E-BA43-583CC638AE55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4323E55-3539-485E-BA43-583CC638AE55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA07431E-29E4-41CE-A35C-4286A24F8F7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA07431E-29E4-41CE-A35C-4286A24F8F7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA07431E-29E4-41CE-A35C-4286A24F8F7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA07431E-29E4-41CE-A35C-4286A24F8F7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,7 +60,7 @@ Global
 		{58ECD180-3701-4DFB-82E5-766460747BF5} = {36E5DD9E-0794-45B9-A8CC-598FDB7ABE5A}
 		{D71B7C7C-60D6-4ACB-BD8B-6488547BD58F} = {D14EC534-79A9-4E01-B1F0-26B88FE46CAC}
 		{7A778D4B-9AE1-46AD-B5CE-75549D4FC1AB} = {C9DE4AB8-F172-4C4D-8059-B57568AB221B}
-		{B4323E55-3539-485E-BA43-583CC638AE55} = {6C9F7F88-1D0B-479B-9326-0433C12DBC02}
+		{FA07431E-29E4-41CE-A35C-4286A24F8F7B} = {6C9F7F88-1D0B-479B-9326-0433C12DBC02}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2EB48598-8D30-431E-85BC-FB20EBC7E066}

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NewShore.Common.Responses
 {
-    public class DataResponses
+    public class DataResponse
     {
         public ICollection<FlightsInfoResponse> flightsInfoResponses { get; set; }
     }

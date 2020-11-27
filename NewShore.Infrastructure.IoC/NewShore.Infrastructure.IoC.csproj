@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\" />
-    <Folder Include="Helpers\" />
+    <ProjectReference Include="..\NewShore.Domain\NewShore.Domain.csproj" />
   </ItemGroup>
 
 </Project>
