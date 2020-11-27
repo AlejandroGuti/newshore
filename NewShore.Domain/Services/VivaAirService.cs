@@ -2,6 +2,7 @@
 using NewShore.Common.Responses;
 using NewShore.Domain.Services.Interfaces;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -16,7 +17,14 @@ namespace NewShore.Domain.Services
         {
             try
             {
-
+                if (requestModel.From<=DateTime.Now)
+                {
+                    return new Response
+                    {
+                        IsSuccess = false,
+                        Message = "Please select a diferent day of today "
+                    };
+                }
                 string urlBase = "http://testapi.vivaair.com";
                 string prefix = "/otatest/api";
                 string controller = "/values";
@@ -38,20 +46,22 @@ namespace NewShore.Domain.Services
                         Message = "Failed comunication"
                     };
                 }
-                DataResponse dataResponse = JsonConvert.DeserializeObject<DataResponse>(answer);
-                if (dataResponse==null)
+                var flightsInfoResponses = JsonConvert.DeserializeObject(answer);
+                ICollection<FlightsInfoResponse> flightsInfoResponses1 = JsonConvert.DeserializeObject<ICollection<FlightsInfoResponse>>(flightsInfoResponses.ToString());
+                if (flightsInfoResponses1 == null)
                 {
                     return new Response
                     {
                         IsSuccess=false,
-                        Message="Failed Model"
+                        Message="Not Information"
                     };
                 }
+                
                 return new Response
                 {
                     IsSuccess = true,
                     Message = "Ok",
-                    Result= dataResponse
+                    Result= flightsInfoResponses1
                 };
             }
             catch (Exception ex)
