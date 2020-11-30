@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using NewShore.Common.Requests;
 using NewShore.Common.Responses;
 using NewShore.Domain.Services.Interfaces;
@@ -10,7 +13,8 @@ namespace NewShoreAPI.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
-
+    [EnableCors("CorsAPIAngular")]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Admin")]
     public class VivaAirController : ControllerBase
     {
         private readonly IVivaAirService _vivaAirService;
@@ -43,7 +47,7 @@ namespace NewShoreAPI.Controllers
                                         Message = ex.ToString(),
 
                                     }
-                    );
+                                    );
             }
 
         }

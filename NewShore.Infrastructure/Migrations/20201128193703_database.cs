@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NewShore.Infrastructure.Migrations
 {
-    public partial class initialdb : Migration
+    public partial class database : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -179,6 +179,7 @@ namespace NewShore.Infrastructure.Migrations
                     ArrivalStation = table.Column<string>(nullable: false),
                     DepartureDate = table.Column<DateTime>(nullable: false),
                     TransportId = table.Column<int>(nullable: false),
+                    UserId = table.Column<string>(nullable: false),
                     Price = table.Column<decimal>(nullable: false),
                     Currency = table.Column<string>(nullable: false)
                 },
@@ -189,6 +190,12 @@ namespace NewShore.Infrastructure.Migrations
                         name: "FK_Flights_Transports_TransportId",
                         column: x => x.TransportId,
                         principalTable: "Transports",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Flights_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -236,6 +243,11 @@ namespace NewShore.Infrastructure.Migrations
                 name: "IX_Flights_TransportId",
                 table: "Flights",
                 column: "TransportId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Flights_UserId",
+                table: "Flights",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -262,10 +274,10 @@ namespace NewShore.Infrastructure.Migrations
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "Transports");
 
             migrationBuilder.DropTable(
-                name: "Transports");
+                name: "AspNetUsers");
         }
     }
 }

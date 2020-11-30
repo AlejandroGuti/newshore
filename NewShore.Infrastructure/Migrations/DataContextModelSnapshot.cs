@@ -178,9 +178,15 @@ namespace NewShore.Infrastructure.Migrations
                     b.Property<int>("TransportId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TransportId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Flights");
                 });
@@ -338,8 +344,14 @@ namespace NewShore.Infrastructure.Migrations
             modelBuilder.Entity("NewShore.Infrastructure.Entities.Flight", b =>
                 {
                     b.HasOne("NewShore.Infrastructure.Entities.Transport", "Transport")
-                        .WithMany()
+                        .WithMany("flights")
                         .HasForeignKey("TransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NewShore.Infrastructure.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

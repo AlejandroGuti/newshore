@@ -6,6 +6,9 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShoreAPI", "NewShoreAPI\NewShoreAPI.csproj", "{7FE46E40-A1CE-4379-BCFF-67CEC7017E50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.Presentation", "1.Presentation", "{D90894A9-D19E-4232-AE10-35C96B18CBC0}"
+	ProjectSection(SolutionItems) = preProject
+		..\NewAngular\ProyectNew\ProyectAngular.zip = ..\NewAngular\ProyectNew\ProyectAngular.zip
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.Application", "2.Application", "{28FE1003-7E12-4D7B-9AF0-A431C07EE32A}"
 EndProject
@@ -23,7 +26,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShore.Infrastructure", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShore.Common", "NewShore.Common\NewShore.Common.csproj", "{7A778D4B-9AE1-46AD-B5CE-75549D4FC1AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewShore.Infrastructure.IoC", "NewShore.Infrastructure.IoC\NewShore.Infrastructure.IoC.csproj", "{FA07431E-29E4-41CE-A35C-4286A24F8F7B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NewShore.Infrastructure.IoC", "NewShore.Infrastructure.IoC\NewShore.Infrastructure.IoC.csproj", "{FA07431E-29E4-41CE-A35C-4286A24F8F7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
