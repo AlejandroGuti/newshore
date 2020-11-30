@@ -1,8 +1,8 @@
-﻿using NewShore.Common.Requests;
+﻿using NewShore.Common.Enums;
+using NewShore.Common.Requests;
 using NewShore.Common.Responses;
 using NewShore.Domain.Services.Interfaces;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -11,18 +11,18 @@ using System.Threading.Tasks;
 
 namespace NewShore.Domain.Services
 {
-    public class VivaAirService: IVivaAirService
+    public class VivaAirService : IVivaAirService
     {
         public async Task<Response> SerchFlights(FlightsInfoRequest requestModel)
         {
             try
             {
-                if (requestModel.From<=DateTime.Now)
+                if (requestModel.From <= DateTime.Now)
                 {
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = "Please select a diferent day of today "
+                        Message = PostDestination.ErrorDate.ToString()
                     };
                 }
                 string urlBase = "http://testapi.vivaair.com";
@@ -43,32 +43,33 @@ namespace NewShore.Domain.Services
                     return new Response
                     {
                         IsSuccess = false,
-                        Message = "Failed comunication"
+                        Message = GeneralMessages.FailedConmunication.ToString()
                     };
                 }
-                var flightsInfoResponses = JsonConvert.DeserializeObject(answer);
-                ICollection<FlightsInfoResponse> flightsInfoResponses1 = JsonConvert.DeserializeObject<ICollection<FlightsInfoResponse>>(flightsInfoResponses.ToString());
+                object flightsInfoResponses = JsonConvert.DeserializeObject(answer);
+                ICollection<FlightsInfoResponse> flightsInfoResponses1 =
+                    JsonConvert.DeserializeObject<ICollection<FlightsInfoResponse>>(flightsInfoResponses.ToString());
                 if (flightsInfoResponses1 == null)
                 {
                     return new Response
                     {
-                        IsSuccess=false,
-                        Message="Not Information"
+                        IsSuccess = false,
+                        Message = GeneralMessages.NotFound.ToString()
                     };
                 }
-                
+
                 return new Response
                 {
                     IsSuccess = true,
-                    Message = "Ok",
-                    Result= flightsInfoResponses1
+                    Message = GeneralMessages.Found.ToString(),
+                    Result = flightsInfoResponses1
                 };
             }
             catch (Exception ex)
             {
                 return new Response
                 {
-                     Message = ex.ToString(),
+                    Message = ex.ToString(),
                     IsSuccess = false,
                 };
             }
@@ -76,4 +77,5 @@ namespace NewShore.Domain.Services
         }
 
     }
+
 }

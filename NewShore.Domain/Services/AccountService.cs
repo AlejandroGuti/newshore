@@ -38,6 +38,15 @@ namespace NewShore.Domain.Services
                 Document = model.Document,
                 UserType = model.UserType
             };
+            var info = await _userRepository.GetUserByEmailAsync(user.Email);
+            if (info != null)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "User email exist"
+                };
+            }
             IdentityResult result = await _userRepository.AddUserAsync(user, model.Password);
             await _userRepository.AddUserToRoleAsync(user, model.UserType.ToString());
 
@@ -51,6 +60,7 @@ namespace NewShore.Domain.Services
 
                     Result = BuildToken(model.Email, new List<string>()),
                     IsSuccess = true,
+                    Message="User Created"
                 };
             }
             else

@@ -10,8 +10,8 @@ using NewShore.Infrastructure.Contexts;
 namespace NewShore.Infrastructure.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201127000227_initialdb")]
-    partial class initialdb
+    [Migration("20201128193703_database")]
+    partial class database
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -180,9 +180,15 @@ namespace NewShore.Infrastructure.Migrations
                     b.Property<int>("TransportId")
                         .HasColumnType("int");
 
+                    b.Property<string>("UserId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TransportId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Flights");
                 });
@@ -340,8 +346,14 @@ namespace NewShore.Infrastructure.Migrations
             modelBuilder.Entity("NewShore.Infrastructure.Entities.Flight", b =>
                 {
                     b.HasOne("NewShore.Infrastructure.Entities.Transport", "Transport")
-                        .WithMany()
+                        .WithMany("flights")
                         .HasForeignKey("TransportId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("NewShore.Infrastructure.Entities.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

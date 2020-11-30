@@ -14,13 +14,16 @@ namespace NewShore.Infrastructure.Entities
         [Required]
         [Display(Name = "Arrival Station")]
         public string ArrivalStation { get; set; }
-        [DisplayFormat(DataFormatString = "{yyyy-MM-dd}")]
+        [DisplayFormat(DataFormatString = "{0: aaaa - MM - dd hh: mm tt}")]
         [Display(Name = "Departure Date")]
         [Required]
         public DateTime DepartureDate { get; set; }
         [Required]
         [Display(Name = "Transport")]
         public Transport Transport { get; set; }
+        [Required]
+        [Display(Name = "User")]
+        public User User { get; set; }
         [Required]
         [Display(Name = "Price")]
         public decimal Price { get; set; }

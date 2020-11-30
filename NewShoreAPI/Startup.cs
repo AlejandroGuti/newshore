@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -7,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
+using NewShore.Common.DTOs;
 using NewShore.Infrastructure.Contexts;
 using NewShore.Infrastructure.Entities;
 using NewShore.Infrastructure.IoC;
@@ -26,6 +28,29 @@ namespace NewShoreAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(configuration =>
+            {
+                configuration.CreateMap<Flight, FlightDTO>()
+                .ReverseMap();
+                configuration.CreateMap<Transport, TransportDTO>()
+                .ReverseMap();
+                configuration.CreateMap<Transport, TransportListDTO>()
+                .ReverseMap();
+                configuration.CreateMap<TransportDTO, FlightDTO>()
+                .ReverseMap();
+                configuration.CreateMap<TransportDTO, TransportListDTO>()
+                .ReverseMap();
+
+            }, typeof(Startup));
+            services.AddCors(options =>
+            {
+                options.AddPolicy("NewShore", builder =>
+                builder
+                //.WithOrigins("http://localhost:4200/")
+                .WithOrigins("*")
+                .WithMethods("*")
+                .WithHeaders("*"));
+            });
             services.AddIdentity<User, IdentityRole>(cfg =>
             {
                 cfg.Tokens.AuthenticatorTokenProvider = TokenOptions.DefaultAuthenticatorProvider;
@@ -78,7 +103,7 @@ namespace NewShoreAPI
             app.UseRouting();
 
             app.UseAuthorization();
-
+            app.UseCors();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

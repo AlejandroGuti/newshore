@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
 using NewShore.Common.Requests;
 using NewShore.Domain.Services.Interfaces;
 using System;
@@ -8,6 +9,7 @@ namespace NewShoreAPI.Controllers
 {
     [Route("api/v1/[controller]")]
     [ApiController]
+    [EnableCors("NewShore")]
     public class AccountController : ControllerBase
     {
         private readonly IAccountService _accountService;
